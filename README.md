@@ -122,72 +122,11 @@ Este é meu portfolio pessoal, uma experiência web imersiva que reflete minha d
 - Navegador web moderno
 - Servidor web local (opcional)
 
-### Clonando o Repositório
-```bash
-git clone https://github.com/seu-usuario/portfolio-cassio-oliveira.git
-cd portfolio-cassio-oliveira
-```
-
-### Executando Localmente
-```bash
-# Método 1: Abrir diretamente no navegador
-# Abra o arquivo index.html no seu navegador
-
-# Método 2: Servidor Python (se disponível)
-python -m http.server 8000
-
-# Método 3: Node.js live-server (se instalado)
-npx live-server
-```
-
 ### Personalizando
 1. **Informações Pessoais**: Edite as seções no `index.html`
 2. **Cores e Temas**: Modifique as variáveis CSS em `css/style.css`
 3. **Projetos**: Atualize a seção de projetos com seus próprios
 4. **Links Sociais**: Configure seus perfis nas redes sociais
-
----
-
-## 📁 Estrutura do Projeto
-
-```
-portfolio-cassio-oliveira/
-│
-├── 📄 index.html              # Página principal
-├── 📁 css/
-│   └── 📄 style.css          # Estilos principais
-├── 📁 js/
-│   └── 📄 script.js          # JavaScript principal
-├── 📄 sitemap.xml            # Mapa do site para SEO
-├── 📄 robots.txt             # Instruções para crawlers
-├── 📄 site.webmanifest       # Manifesto PWA
-├── 📄 .htaccess              # Configurações Apache
-└── 📄 README.md              # Este arquivo
-```
-
----
-
-## 🎨 Características Técnicas
-
-### Animações CSS
-- **Keyframes customizados** para elementos flutuantes
-- **Intersection Observer** para animações baseadas em scroll  
-- **CSS Grid/Flexbox** para layouts responsivos
-- **Custom Properties** para consistência de design
-
-### JavaScript Modular
-- **Event listeners** otimizados
-- **Web APIs** modernas (Intersection Observer, Web Audio)
-- **Performance** otimizada com throttling
-- **Mobile-first** approach
-
-### SEO Avançado
-- **Meta tags** completas (Open Graph, Twitter Cards)
-- **Structured Data** (Schema.org)
-- **Sitemap** XML automático
-- **Core Web Vitals** otimizados
-
----
 
 ## 📊 Performance
 
@@ -219,67 +158,11 @@ portfolio-cassio-oliveira/
 - Controles de toque otimizados
 - Música ambiente discreta
 
----
-
-## 🎵 Easter Eggs
-
-Descubra funcionalidades secretas:
-- 🔄 **Clique 5x no logo** para modo especial
-- ⌨️ **Código Konami** para comandos de desenvolvedor
-- 🎮 **Console commands**: `help()`, `rainbow()`, `matrix()`
-
----
-
-## 🚀 Deploy
-
-### GitHub Pages
-```bash
-# 1. Fazer push para branch main
-git push origin main
-
-# 2. Ativar GitHub Pages nas configurações do repositório
-# 3. Selecionar source: Deploy from a branch -> main
-```
-
-### Netlify
-```bash
-# 1. Conectar repositório no Netlify
-# 2. Build command: (deixar vazio)
-# 3. Publish directory: (deixar vazio ou "/")
-```
-
-### Vercel
-```bash
-# 1. Importar projeto no Vercel
-# 2. Deploy automático configurado
-```
-
----
-
-## 🤝 Contribuindo
-
-Contribuições são sempre bem-vindas! Se você tem sugestões de melhorias:
-
-1. **Fork** o projeto
-2. Crie uma **branch** para sua feature (`git checkout -b feature/AmazingFeature`)
-3. **Commit** suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. **Push** para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um **Pull Request**
-
----
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-
 ## 📞 Contato
 
 **Cássio Fernando de Oliveira**  
 📍 Ribeirão Preto, SP  
 📧 contato@cassiofernandooliveira.com.br  
-📱 +55 16 99297-0597
 
 ### � Redes Sociais
 
@@ -307,5 +190,6 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 *Transformando ideias em código e melodias em experiências únicas* 🎵💻
 
 [![Portfolio](https://img.shields.io/badge/🌐-Ver%20Portfolio-blue?style=for-the-badge)](https://cassiofernandooliveira.com.br)
+
 
 </div>

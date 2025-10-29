@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://cassiofernandooliveira.com.br/sitemap.xml
+
+# Crawl-delay for better performance
+Crawl-delay: 1
+
+# Block access to sensitive files
+Disallow: /css/
+Disallow: /js/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: *.log
+Disallow: *.json
+
+# Allow important assets
+Allow: /css/style.css
+Allow: /js/script.js
+Allow: /images/
+Allow: /favicon.ico

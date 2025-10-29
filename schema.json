@@ -1,0 +1,47 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Cássio Fernando de Oliveira - Portfolio",
+  "alternateName": ["CFO Dev", "Cássio Fernando Portfolio"],
+  "url": "https://cassiofernandooliveira.com.br",
+  "description": "Portfolio profissional de Cássio Fernando de Oliveira, Desenvolvedor Full Stack especializado em .Net Core, Angular, JavaScript e SQL Server. Músico apaixonado por tecnologia.",
+  "author": {
+    "@type": "Person",
+    "name": "Cássio Fernando de Oliveira",
+    "jobTitle": "Desenvolvedor Full Stack",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "CFO Systems Development",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ribeirão Preto",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      }
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/cassiofernandooliveira/",
+      "https://github.com/cfo-cassiooliveira",
+      "https://www.instagram.com/cfo.cassiooliveira/",
+      "https://www.youtube.com/@cfo.cassiooliveira",
+      "https://www.tiktok.com/@cfo.cassiooliveira",
+      "https://www.threads.com/@cfo.cassiooliveira",
+      "https://suno.com/@cfo_cassiooliveira"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+55-16-99297-0597",
+      "email": "contato@cassiofernandooliveira.com.br",
+      "contactType": "customer service"
+    }
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://cassiofernandooliveira.com.br/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "mainEntity": {
+    "@type": "Person",
+    "@id": "https://cassiofernandooliveira.com.br"
+  }
+}

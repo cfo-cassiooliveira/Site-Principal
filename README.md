@@ -128,6 +128,20 @@ Este é meu portfolio pessoal, uma experiência web imersiva que reflete minha d
 3. **Projetos**: Atualize a seção de projetos com seus próprios
 4. **Links Sociais**: Configure seus perfis nas redes sociais
 
+## 🧪 Testes e qualidade (SonarQube)
+
+Os testes carregam o `js/script.js` real sobre o `index.html` em um DOM simulado (Vitest + jsdom). A cobertura vai
+para o SonarQube local do projeto `../sonarqube` (http://localhost:9001), que exige 80% de cobertura em código novo.
+
+```bash
+npm ci
+npm test                              # testes
+npm run test:coverage                 # testes + coverage/lcov.info
+../sonarqube/scripts/scan.sh .        # análise e Quality Gate (rode depois do test:coverage)
+```
+
+Código novo em `js/` precisa vir com testes em `tests/`.
+
 ## 📊 Performance
 
 - 🟢 **Performance Score**: 95+

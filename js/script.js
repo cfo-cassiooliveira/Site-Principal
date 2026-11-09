@@ -12,7 +12,6 @@ function initializeWebsite() {
     initTypingEffect();
     initSkillBars();
     initMusicPlayer();
-    initContactForm();
     initFloatingElements();
     initThemeToggle();
     initAmbientMusic();

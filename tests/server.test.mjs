@@ -146,4 +146,19 @@ describe('static file server', () => {
 
     expect(response.status).toBe(400);
   });
+
+  // Regressão (Sonar S5122): o servidor liberava CORS para qualquer origem sem necessidade.
+  it('get_WhenFileExists_DoesNotAllowCrossOriginReads', async () => {
+    const response = await get('/');
+
+    expect(response.headers['access-control-allow-origin']).toBeUndefined();
+  });
+
+  it.each(['/', '/missing.html', '/%E0%A4%A'])('get_AnyResponse_SendsSecurityHeaders (%s)', async (rawPath) => {
+    const response = await get(rawPath);
+
+    expect(response.headers['content-security-policy']).toContain("frame-ancestors 'none'");
+    expect(response.headers['x-content-type-options']).toBe('nosniff');
+    expect(response.headers['referrer-policy']).toBe('strict-origin-when-cross-origin');
+  });
 });

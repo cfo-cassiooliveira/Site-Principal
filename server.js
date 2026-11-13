@@ -18,6 +18,21 @@ const mimeTypes = {
     '.vcf': 'text/vcard'
 };
 
+// Os mesmos controles da meta CSP do index.html, mais o que só funciona por cabeçalho (frame-ancestors, nosniff).
+const securityHeaders = {
+    'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; "
+        + "font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; "
+        + "base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+    'X-Content-Type-Options': 'nosniff',
+    'Referrer-Policy': 'strict-origin-when-cross-origin'
+};
+
+/** Responde com os cabeçalhos de segurança em todo status (inclusive erros). */
+function send(res, status, body, headers = {}) {
+    res.writeHead(status, { ...securityHeaders, ...headers });
+    res.end(body);
+}
+
 /**
  * Converte a URL da requisição em um arquivo dentro de root.
  * Devolve null quando o caminho sai de root ("../", inclusive codificado) ou passa por item oculto (.git, .env).
@@ -41,14 +56,12 @@ function createServer(root) {
         try {
             filePath = resolveFilePath(root, req.url);
         } catch {
-            res.writeHead(400);
-            res.end('400 - Bad request');
+            send(res, 400, '400 - Bad request');
             return;
         }
         // Caminho fora da raiz ou oculto: responde como inexistente, sem revelar se o arquivo existe.
         if (!filePath) {
-            res.writeHead(404);
-            res.end('404 - File not found');
+            send(res, 404, '404 - File not found');
             return;
         }
 
@@ -56,20 +69,13 @@ function createServer(root) {
         const contentType = mimeTypes[extname] || 'application/octet-stream';
 
         fs.readFile(filePath, (error, content) => {
-            if (error) {
-                if(error.code == 'ENOENT') {
-                    res.writeHead(404);
-                    res.end('404 - File not found');
-                } else {
-                    res.writeHead(500);
-                    res.end('500 - Internal server error');
-                }
+            if (!error) {
+                // Sem CORS: o site só é lido pela própria origem.
+                send(res, 200, content, { 'Content-Type': contentType });
+            } else if (error.code === 'ENOENT') {
+                send(res, 404, '404 - File not found');
             } else {
-                res.writeHead(200, {
-                    'Content-Type': contentType,
-                    'Access-Control-Allow-Origin': '*'
-                });
-                res.end(content, 'utf-8');
+                send(res, 500, '500 - Internal server error');
             }
         });
     });
@@ -80,7 +86,8 @@ module.exports = { createServer };
 // Só escuta a porta quando executado direto (npm start); nos testes o servidor é criado sob demanda.
 if (require.main === module) {
     const PORT = 8000;
-    createServer(__dirname).listen(PORT, () => {
+    // Servidor de desenvolvimento: só na máquina local, nunca exposto à rede.
+    createServer(__dirname).listen(PORT, '127.0.0.1', () => {
         console.log(`Servidor rodando em http://localhost:${PORT}`);
     });
 }

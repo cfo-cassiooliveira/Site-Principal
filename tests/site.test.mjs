@@ -190,10 +190,65 @@ describe('seo', () => {
     );
   });
 
-  // Regressão: as tags do Google (Tag Manager no head e no noscript) devem permanecer no site.
-  it('googleTagManager_IsPresentInHeadAndNoscript', () => {
-    expect(head.head.innerHTML).toContain("'GTM-PZPBBTWJ'");
-    expect(head.querySelector('noscript iframe').getAttribute('src')).toContain('id=GTM-PZPBBTWJ');
+});
+
+describe('privacy and security', () => {
+  const page = new DOMParser().parseFromString(indexHtml, 'text/html');
+
+  // Regressão (LGPD): o Google Tag Manager gravava cookies de analytics sem consentimento.
+  it('page_DoesNotLoadThirdPartyTrackers', () => {
+    expect(indexHtml).not.toMatch(/googletagmanager|google-analytics|GTM-|gtag\(/i);
+  });
+
+  it('page_LoadsScriptsOnlyFromOwnOrigin', () => {
+    const executable = [...page.querySelectorAll('script')].filter((s) => s.type !== 'application/ld+json');
+
+    expect(executable.map((s) => s.getAttribute('src'))).toEqual(['js/script.js']);
+  });
+
+  // O GitHub Pages não aceita cabeçalhos próprios: a CSP precisa estar no HTML e negar scripts de fora.
+  it('contentSecurityPolicy_IsDeclaredInHeadAndBlocksForeignScripts', () => {
+    const csp = page.querySelector('meta[http-equiv="Content-Security-Policy"]')?.getAttribute('content') ?? '';
+
+    expect(csp).toContain("script-src 'self'");
+    expect(csp).toContain("object-src 'none'");
+    expect(csp).not.toContain('unsafe-inline');
+    expect(page.querySelector('meta[name="referrer"]')?.getAttribute('content')).toBe('strict-origin-when-cross-origin');
+  });
+});
+
+describe('color contrast (WCAG 1.4.3)', () => {
+  const css = readFileSync(join(import.meta.dirname, '..', 'css', 'style.css'), 'utf-8');
+  // Só o bloco :root do tema claro (o primeiro); o escuro vem no @media seguinte.
+  const lightTokens = css.slice(css.indexOf(':root'), css.indexOf('@media (prefers-color-scheme: dark)'));
+  const token = (name) => lightTokens.match(new RegExp(`--${name}:\\s*(#[0-9a-f]{6})`, 'i'))[1];
+  const rgb = (hex) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  const luminance = (color) => {
+    const [r, g, b] = color.map((v) => {
+      const c = v / 255;
+      return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+    });
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  };
+  const ratio = (a, b) => {
+    const [light, dark] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+    return (light + 0.05) / (dark + 0.05);
+  };
+  // Simula o color-mix(in srgb, cor X%, fundo) usado nos selos e cartões.
+  const mix = (color, background, amount) => color.map((v, i) => Math.round(v * amount + background[i] * (1 - amount)));
+
+  // Regressão: o selo "Disponível para novas oportunidades" tinha 3,75:1 sobre o próprio fundo tingido.
+  it('statusBadge_TextOnTintedBackground_ReachesAA', () => {
+    const water = rgb(token('water'));
+
+    expect(ratio(water, mix(water, rgb(token('paper')), 0.14))).toBeGreaterThanOrEqual(4.5);
+  });
+
+  it.each(['ink', 'muted', 'accent'])('%s_OnPaperAndSurface_ReachesAA', (name) => {
+    const color = rgb(token(name));
+
+    expect(ratio(color, rgb(token('paper')))).toBeGreaterThanOrEqual(4.5);
+    expect(ratio(color, rgb(token('surface')))).toBeGreaterThanOrEqual(4.5);
   });
 });
 

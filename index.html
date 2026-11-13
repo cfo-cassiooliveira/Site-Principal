@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Tag Manager (o Google recomenda o mais alto possível no head) -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-PZPBBTWJ');</script>
-    <!-- End Google Tag Manager -->
+    <!-- Segurança: o GitHub Pages não permite cabeçalhos HTTP próprios, então a CSP e a política de referência
+         vão por meta. Sem scripts de terceiros nem cookies de rastreamento (LGPD). -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <!-- SEO: título até ~60 caracteres e descrição até ~160, para não serem cortados no Google -->
     <title>Cássio Oliveira | Desenvolvedor Full Stack .NET e Angular</title>
@@ -63,7 +60,6 @@
     <!-- Performance (Core Web Vitals): conexões antecipadas, foto do topo com prioridade e fontes com swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preload" as="image" href="images/foto.jpg" fetchpriority="high">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -128,9 +124,6 @@
     </script>
 </head>
 <body>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PZPBBTWJ"
-        height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
-
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
     <header class="site-header">

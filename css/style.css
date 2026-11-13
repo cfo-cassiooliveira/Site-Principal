@@ -7,7 +7,8 @@
     --line: #d6dce8;
     --accent: #4652c8;
     --accent-ink: #ffffff;
-    --water: #1f7f7a;
+    /* Tom escurecido para manter 4,5:1 inclusive sobre o próprio fundo tingido (selo "Disponível"). */
+    --water: #186b66;
     --font-text: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
     --font-code: "IBM Plex Mono", Consolas, monospace;
     --wrap: 66rem;

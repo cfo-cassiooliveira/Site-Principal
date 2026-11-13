@@ -1,0 +1,5 @@
+# Arquivos que o Git não pode converter (core.autocrlf=true no Windows).
+# PDF: binário; converter quebras de linha corrompe o arquivo.
+*.pdf binary
+# vCard: o padrão exige CRLF; o GitHub Pages publica os bytes exatamente como estão no repositório.
+*.vcf -text

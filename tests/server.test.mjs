@@ -35,6 +35,13 @@ beforeAll(async () => {
   mkdirSync(join(root, '.git'));
   writeFileSync(join(root, 'index.html'), '<h1>home</h1>');
   writeFileSync(join(root, 'css', 'style.css'), 'body {}');
+  mkdirSync(join(root, 'images'));
+  mkdirSync(join(root, 'curriculo'));
+  writeFileSync(join(root, 'images', 'foto.jpg'), 'jpg');
+  writeFileSync(join(root, 'curriculo', 'cv.pdf'), 'pdf');
+  writeFileSync(join(root, 'data.bin'), 'bin');
+  writeFileSync(join(root, 'favicon.svg'), '<svg/>');
+  writeFileSync(join(root, 'contato.vcf'), 'BEGIN:VCARD');
   writeFileSync(join(root, '.git', 'config'), SECRET);
   writeFileSync(join(sandbox, 'secret.txt'), SECRET);
 
@@ -62,6 +69,42 @@ describe('static file server', () => {
 
     expect(response.status).toBe(200);
     expect(response.headers['content-type']).toBe('text/css');
+  });
+
+  // Regressão: .jpg era entregue como "image/jpg", tipo MIME inexistente.
+  it('get_WhenJpgImage_ServesImageJpeg', async () => {
+    const response = await get('/images/foto.jpg');
+
+    expect(response.status).toBe(200);
+    expect(response.headers['content-type']).toBe('image/jpeg');
+  });
+
+  it('get_WhenSvgFavicon_ServesImageSvgXml', async () => {
+    const response = await get('/favicon.svg');
+
+    expect(response.status).toBe(200);
+    expect(response.headers['content-type']).toBe('image/svg+xml');
+  });
+
+  it('get_WhenContactCard_ServesTextVcard', async () => {
+    const response = await get('/contato.vcf');
+
+    expect(response.status).toBe(200);
+    expect(response.headers['content-type']).toBe('text/vcard');
+  });
+
+  it('get_WhenResumePdf_ServesApplicationPdf', async () => {
+    const response = await get('/curriculo/cv.pdf');
+
+    expect(response.status).toBe(200);
+    expect(response.headers['content-type']).toBe('application/pdf');
+  });
+
+  it('get_WhenExtensionIsUnknown_ServesOctetStream', async () => {
+    const response = await get('/data.bin');
+
+    expect(response.status).toBe(200);
+    expect(response.headers['content-type']).toBe('application/octet-stream');
   });
 
   it('get_WhenQueryStringIsPresent_IgnoresIt', async () => {

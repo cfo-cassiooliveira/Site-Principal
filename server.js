@@ -2,24 +2,20 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
+// Só os tipos de arquivo que o site realmente publica.
 const mimeTypes = {
     '.html': 'text/html',
     '.js': 'text/javascript',
     '.css': 'text/css',
-    '.json': 'application/json',
+    '.webmanifest': 'application/manifest+json',
+    '.xml': 'application/xml',
+    '.txt': 'text/plain',
     '.png': 'image/png',
-    '.jpg': 'image/jpg',
-    '.gif': 'image/gif',
     '.svg': 'image/svg+xml',
-    '.wav': 'audio/wav',
-    '.mp4': 'video/mp4',
-    '.woff': 'application/font-woff',
-    '.ttf': 'application/font-ttf',
-    '.eot': 'application/vnd.ms-fontobject',
-    '.otf': 'application/font-otf',
-    '.wasm': 'application/wasm',
-    '.mp3': 'audio/mpeg',
-    '.ogg': 'audio/ogg'
+    '.jpg': 'image/jpeg',
+    '.ico': 'image/x-icon',
+    '.pdf': 'application/pdf',
+    '.vcf': 'text/vcard'
 };
 
 /**

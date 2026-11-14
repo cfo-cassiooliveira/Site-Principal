@@ -10,7 +10,7 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <!-- SEO: título até ~60 caracteres e descrição até ~160, para não serem cortados no Google -->
-    <title>Cássio Oliveira | Desenvolvedor Full Stack .NET e Angular</title>
+    <title>Cássio F. Oliveira | Desenvolvedor Full Stack .NET e Angular</title>
     <meta name="description" content="Desenvolvedor full stack com mais de 8 anos em C#/.NET e Angular. SSO com Keycloak, microsserviços com RabbitMQ, SQL Server e Oracle. Ribeirão Preto, SP.">
     <meta name="keywords" content="desenvolvedor full stack, desenvolvedor .NET, C#, ASP.NET Core, Angular, TypeScript, Keycloak, SSO, RabbitMQ, microsserviços, SQL Server, Oracle, Kubernetes, Ribeirão Preto">
     <meta name="author" content="Cássio Fernando de Oliveira">
@@ -29,7 +29,7 @@
     <meta property="og:site_name" content="Cássio Fernando de Oliveira">
     <meta property="og:locale" content="pt_BR">
     <meta property="og:url" content="https://cassiofernandooliveira.com.br/">
-    <meta property="og:title" content="Cássio Oliveira | Desenvolvedor Full Stack .NET e Angular">
+    <meta property="og:title" content="Cássio F. Oliveira | Desenvolvedor Full Stack .NET e Angular">
     <meta property="og:description" content="Mais de 8 anos em C#/.NET e Angular. SSO com Keycloak, microsserviços com RabbitMQ e projetos abertos no GitHub.">
     <meta property="og:image" content="https://cassiofernandooliveira.com.br/images/og-image.jpg">
     <meta property="og:image:secure_url" content="https://cassiofernandooliveira.com.br/images/og-image.jpg">
@@ -42,7 +42,7 @@
 
     <!-- Twitter/X Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Cássio Oliveira | Desenvolvedor Full Stack .NET e Angular">
+    <meta name="twitter:title" content="Cássio F. Oliveira | Desenvolvedor Full Stack .NET e Angular">
     <meta name="twitter:description" content="Mais de 8 anos em C#/.NET e Angular. SSO com Keycloak, microsserviços com RabbitMQ e projetos abertos no GitHub.">
     <meta name="twitter:image" content="https://cassiofernandooliveira.com.br/images/og-image.jpg">
     <meta name="twitter:image:alt" content="Cássio Fernando de Oliveira, desenvolvedor full stack">
@@ -73,9 +73,9 @@
           "@type": "ProfilePage",
           "@id": "https://cassiofernandooliveira.com.br/#profile",
           "url": "https://cassiofernandooliveira.com.br/",
-          "name": "Cássio Oliveira | Desenvolvedor Full Stack .NET e Angular",
+          "name": "Cássio F. Oliveira | Desenvolvedor Full Stack .NET e Angular",
           "inLanguage": "pt-BR",
-          "dateModified": "2026-11-12",
+          "dateModified": "2026-11-13",
           "isPartOf": { "@id": "https://cassiofernandooliveira.com.br/#website" },
           "mainEntity": { "@id": "https://cassiofernandooliveira.com.br/#person" }
         },
@@ -90,7 +90,7 @@
           "@type": "Person",
           "@id": "https://cassiofernandooliveira.com.br/#person",
           "name": "Cássio Fernando de Oliveira",
-          "alternateName": "Cássio Oliveira",
+          "alternateName": "Cássio F. Oliveira",
           "jobTitle": "Desenvolvedor Full Stack",
           "description": "Desenvolvedor full stack com mais de 8 anos em C#/.NET e Angular, SSO com Keycloak e microsserviços com RabbitMQ.",
           "url": "https://cassiofernandooliveira.com.br/",
@@ -176,7 +176,7 @@
                         <line x1="150" y1="150" x2="150" y2="250"/>
                         <line x1="150" y1="250" x2="250" y2="250"/>
                     </svg>
-                    <a class="node node-spa" href="https://github.com/cfo-cassiooliveira/legado-cadastro-usuarios">
+                    <a class="node node-spa" href="https://github.com/cfo-cassiooliveira/cadastro">
                         <span class="node-name">Angular 22</span>
                         <span class="node-role">Telas do cadastro de usuários</span>
                     </a>
@@ -184,13 +184,13 @@
                         <span class="node-name">Keycloak 26</span>
                         <span class="node-role">SSO via OIDC, SPI em Java</span>
                     </a>
-                    <a class="node node-api" href="https://github.com/cfo-cassiooliveira/legado-cadastro-usuarios">
-                        <span class="node-name">.NET 10 Web API</span>
-                        <span class="node-role">Clean Architecture</span>
+                    <a class="node node-api" href="https://github.com/cfo-cassiooliveira/cadastro">
+                        <span class="node-name">.NET 10 BFF</span>
+                        <span class="node-role">Clean Architecture, sem token no navegador</span>
                     </a>
                     <a class="node node-db" href="https://github.com/cfo-cassiooliveira/legado-cadastro-usuarios">
                         <span class="node-name">SQL Server</span>
-                        <span class="node-role">Migrations versionadas</span>
+                        <span class="node-role">Legado migrado sob demanda</span>
                     </a>
                     <a class="node node-logs" href="https://github.com/cfo-cassiooliveira/graylog">
                         <span class="node-name">Graylog</span>
@@ -294,18 +294,26 @@
             <h2>Projetos no GitHub</h2>
             <ul class="projects">
                 <li class="project">
+                    <h3><a href="https://github.com/cfo-cassiooliveira/cadastro">Cadastro com SSO no Keycloak</a></h3>
+                    <p>
+                        Sucessor do sistema legado, autenticado só pelo Keycloak via BFF: o navegador nunca recebe token
+                        (sessão no servidor, PKCE e PAR) e os usuários do legado migram no primeiro login, com a mesma senha.
+                    </p>
+                    <ul class="tags" aria-label="Tecnologias"><li>.NET 10</li><li>Angular 22</li><li>Keycloak</li><li>OIDC</li><li>Playwright</li></ul>
+                </li>
+                <li class="project">
                     <h3><a href="https://github.com/cfo-cassiooliveira/Keycloak">Keycloak com extensões em Java</a></h3>
                     <p>
-                        Servidor de identidade reproduzível em Docker: auditoria de login sem dados pessoais (Event Listener SPI),
-                        tema de login próprio e realm endurecido.
+                        Servidor de identidade reproduzível em Docker: auditoria de login sem dados pessoais (Event Listener SPI)
+                        enviada ao Graylog com fallback local, tema de login próprio e realm endurecido com o client do cadastro.
                     </p>
-                    <ul class="tags" aria-label="Tecnologias"><li>Java</li><li>Keycloak SPI</li><li>Bootstrap 5</li><li>Docker</li></ul>
+                    <ul class="tags" aria-label="Tecnologias"><li>Java</li><li>Keycloak SPI</li><li>Bootstrap 5</li><li>Docker</li><li>Trivy</li></ul>
                 </li>
                 <li class="project">
                     <h3><a href="https://github.com/cfo-cassiooliveira/legado-cadastro-usuarios">Cadastro de usuários legado</a></h3>
                     <p>
-                        Sistema completo em Clean Architecture com login próprio e hash PBKDF2 importável, base para simular a
-                        migração dos usuários para o Keycloak sem pedir nova senha.
+                        Sistema completo em Clean Architecture com login próprio e hash PBKDF2 importável, a origem dos usuários
+                        migrados para o Keycloak. Testes de arquitetura, integração e E2E com acessibilidade.
                     </p>
                     <ul class="tags" aria-label="Tecnologias"><li>.NET 10</li><li>Angular 22</li><li>SQL Server</li><li>EF Core</li></ul>
                 </li>
@@ -313,7 +321,7 @@
                     <h3><a href="https://github.com/cfo-cassiooliveira/graylog">Logs centralizados</a></h3>
                     <p>
                         Graylog provisionado como código: entradas GELF, retenção, mascaramento de dados pessoais (LGPD),
-                        streams e alertas para todos os projetos.
+                        streams e alertas do legado, do Keycloak, do cadastro e da migração de identidade.
                     </p>
                     <ul class="tags" aria-label="Tecnologias"><li>Graylog</li><li>OpenSearch</li><li>MongoDB</li><li>Docker</li></ul>
                 </li>
@@ -321,7 +329,7 @@
                     <h3><a href="https://github.com/cfo-cassiooliveira/sonarqube">Qualidade de código</a></h3>
                     <p>
                         SonarQube provisionado em Docker com o Quality Gate como código: nenhuma issue nova e cobertura
-                        mínima de 80% em todo código novo.
+                        mínima de 80% em todo código novo, aplicado a todos os projetos do portfólio.
                     </p>
                     <ul class="tags" aria-label="Tecnologias"><li>SonarQube</li><li>PostgreSQL</li><li>Docker</li></ul>
                 </li>

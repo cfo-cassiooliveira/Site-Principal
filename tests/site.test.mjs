@@ -302,6 +302,25 @@ describe('content', () => {
     }
   });
 
+  it('projectCards_LinkToRepositoriesOnGitHub', () => {
+    const links = [...document.querySelectorAll('.projects .project h3 a')];
+
+    expect(links.length).toBeGreaterThan(0);
+    for (const link of links) {
+      expect(link.href).toMatch(/^https:\/\/github\.com\/cfo-cassiooliveira\/[\w-]+$/);
+    }
+  });
+
+  // O card do Keycloak precisa refletir o que o repositório entrega: a migração sob demanda do legado e o OTP do admin.
+  it('keycloakProjectCard_DescribesOnDemandMigrationAndAdminOtp', () => {
+    const card = [...document.querySelectorAll('.projects .project')]
+      .find((project) => project.querySelector('h3 a')?.href.endsWith('/Keycloak'));
+
+    expect(card, 'card do repositório Keycloak').toBeDefined();
+    expect(card.textContent).toMatch(/migração sob demanda/i);
+    expect(card.textContent).toMatch(/OTP/);
+  });
+
   // Regressão da decisão de foco profissional: o site não mistura conteúdo musical.
   it('page_DoesNotMentionMusicContent', () => {
     expect(indexHtml.toLowerCase()).not.toMatch(/músic|music|suno/);

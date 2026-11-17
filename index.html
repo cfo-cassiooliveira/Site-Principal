@@ -304,10 +304,12 @@
                 <li class="project">
                     <h3><a href="https://github.com/cfo-cassiooliveira/Keycloak">Keycloak com extensões em Java</a></h3>
                     <p>
-                        Servidor de identidade reproduzível em Docker: auditoria de login sem dados pessoais (Event Listener SPI)
-                        enviada ao Graylog com fallback local, tema de login próprio e realm endurecido com o client do cadastro.
+                        Servidor de identidade reproduzível em Docker: migração sob demanda dos usuários do legado (Authenticator SPI
+                        que valida a senha no legado por TLS e HMAC e cria o usuário sem pedir reset), OTP obrigatório para
+                        administradores, auditoria de login sem dados pessoais enviada ao Graylog com fallback local, tema de login
+                        próprio e realm endurecido com o client do cadastro.
                     </p>
-                    <ul class="tags" aria-label="Tecnologias"><li>Java</li><li>Keycloak SPI</li><li>Bootstrap 5</li><li>Docker</li><li>Trivy</li></ul>
+                    <ul class="tags" aria-label="Tecnologias"><li>Java</li><li>Keycloak SPI</li><li>HMAC</li><li>Bootstrap 5</li><li>Docker</li><li>Trivy</li></ul>
                 </li>
                 <li class="project">
                     <h3><a href="https://github.com/cfo-cassiooliveira/legado-cadastro-usuarios">Cadastro de usuários legado</a></h3>

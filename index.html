@@ -297,7 +297,8 @@
                     <h3><a href="https://github.com/cfo-cassiooliveira/cadastro">Cadastro com SSO no Keycloak</a></h3>
                     <p>
                         Sucessor do sistema legado, autenticado só pelo Keycloak via BFF: o navegador nunca recebe token
-                        (sessão no servidor, PKCE e PAR) e os usuários do legado migram no primeiro login, com a mesma senha.
+                        (sessão no servidor, PKCE e PAR) e os usuários do legado migram no primeiro login, com a mesma senha. Inclui a pesquisa em logs por token, liberada só
+                        com role, OTP recente e trilha de auditoria.
                     </p>
                     <ul class="tags" aria-label="Tecnologias"><li>.NET 10</li><li>Angular 22</li><li>Keycloak</li><li>OIDC</li><li>Playwright</li></ul>
                 </li>
@@ -322,10 +323,18 @@
                 <li class="project">
                     <h3><a href="https://github.com/cfo-cassiooliveira/graylog">Logs centralizados</a></h3>
                     <p>
-                        Graylog provisionado como código: entradas GELF, retenção, mascaramento de dados pessoais (LGPD),
-                        streams e alertas do legado, do Keycloak, do cadastro e da migração de identidade.
+                        Graylog provisionado como código: entradas GELF, retenção, mascaramento e pseudonimização por HMAC dos dados pessoais (LGPD), que permite
+                        pesquisar um titular pelo token sem expor o valor, além de streams e alertas do legado, do Keycloak, do cadastro e da migração de identidade.
                     </p>
                     <ul class="tags" aria-label="Tecnologias"><li>Graylog</li><li>OpenSearch</li><li>MongoDB</li><li>Docker</li></ul>
+                </li>
+                <li class="project">
+                    <h3><a href="https://github.com/cfo-cassiooliveira/workspace-grafana">Painéis e alertas</a></h3>
+                    <p>
+                        Grafana OSS com login único pelo Keycloak e dashboards, alertas e health check como código, lendo os logs
+                        do Graylog por um proxy somente leitura do OpenSearch.
+                    </p>
+                    <ul class="tags" aria-label="Tecnologias"><li>Grafana</li><li>Prometheus</li><li>OpenSearch</li><li>Docker</li></ul>
                 </li>
                 <li class="project">
                     <h3><a href="https://github.com/cfo-cassiooliveira/sonarqube">Qualidade de código</a></h3>

@@ -321,6 +321,35 @@ describe('content', () => {
     expect(card.textContent).toMatch(/OTP/);
   });
 
+  // Todo repositório público de portfólio com projeto próprio aparece no site; o Grafana ficou de fora até 2026-11-18.
+  it('grafanaProjectCard_LinksToTheGrafanaRepository', () => {
+    const card = [...document.querySelectorAll('.projects .project')]
+      .find((project) => project.querySelector('h3 a')?.href.endsWith('/workspace-grafana'));
+
+    expect(card, 'card do repositório workspace-grafana').toBeDefined();
+    expect(card.textContent).toMatch(/Grafana/);
+    expect(card.textContent).toMatch(/Keycloak/);
+  });
+
+  // O card de logs precisa citar a pseudonimização pesquisável, que é o que o projeto entrega além da máscara.
+  it('logsProjectCard_DescribesSearchablePseudonymization', () => {
+    const card = [...document.querySelectorAll('.projects .project')]
+      .find((project) => project.querySelector('h3 a')?.href.endsWith('/graylog'));
+
+    expect(card, 'card do repositório graylog').toBeDefined();
+    expect(card.textContent).toMatch(/pseudonimização/i);
+    expect(card.textContent).toMatch(/HMAC/);
+  });
+
+  it('cadastroProjectCard_DescribesLogSearchProtectedByOtp', () => {
+    const card = [...document.querySelectorAll('.projects .project')]
+      .find((project) => project.querySelector('h3 a')?.href.endsWith('/cadastro'));
+
+    expect(card, 'card do repositório cadastro').toBeDefined();
+    expect(card.textContent).toMatch(/pesquisa em logs/i);
+    expect(card.textContent).toMatch(/OTP/);
+  });
+
   // Regressão da decisão de foco profissional: o site não mistura conteúdo musical.
   it('page_DoesNotMentionMusicContent', () => {
     expect(indexHtml.toLowerCase()).not.toMatch(/músic|music|suno/);

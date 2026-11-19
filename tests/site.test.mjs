@@ -331,6 +331,17 @@ describe('content', () => {
     expect(card.textContent).toMatch(/Keycloak/);
   });
 
+  // O repositório do broker de mensageria entrou no portfólio em 2026-11-19 e precisa aparecer no site.
+  it('rabbitmqProjectCard_LinksToTheRabbitmqRepository', () => {
+    const card = [...document.querySelectorAll('.projects .project')]
+      .find((project) => project.querySelector('h3 a')?.href.endsWith('/rabbitmq'));
+
+    expect(card, 'card do repositório rabbitmq').toBeDefined();
+    expect(card.textContent).toMatch(/RabbitMQ/);
+    expect(card.textContent).toMatch(/DLQ/);
+    expect(card.textContent).toMatch(/Graylog/);
+  });
+
   // O card de logs precisa citar a pseudonimização pesquisável, que é o que o projeto entrega além da máscara.
   it('logsProjectCard_DescribesSearchablePseudonymization', () => {
     const card = [...document.querySelectorAll('.projects .project')]

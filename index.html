@@ -298,9 +298,9 @@
                     <p>
                         Sucessor do sistema legado, autenticado só pelo Keycloak via BFF: o navegador nunca recebe token
                         (sessão no servidor, PKCE e PAR) e os usuários do legado migram no primeiro login, com a mesma senha. Inclui a pesquisa em logs por token, liberada só
-                        com role, OTP recente e trilha de auditoria.
+                        com role, OTP recente e trilha de auditoria. Também faz a importação em lote de usuários por CSV: antivírus, confirmação em duas etapas, uma mensagem por pessoa no RabbitMQ (outbox, retry e DLQ), criação no Keycloak sem senha e com e-mail de ativação, dados pessoais cifrados e apagados ao fim e relatório por linha, validada de ponta a ponta com 5.000 linhas.
                     </p>
-                    <ul class="tags" aria-label="Tecnologias"><li>.NET 10</li><li>Angular 22</li><li>Keycloak</li><li>OIDC</li><li>Playwright</li></ul>
+                    <ul class="tags" aria-label="Tecnologias"><li>.NET 10</li><li>Angular 22</li><li>Keycloak</li><li>OIDC</li><li>RabbitMQ</li><li>SQL Server</li><li>Playwright</li></ul>
                 </li>
                 <li class="project">
                     <h3><a href="https://github.com/cfo-cassiooliveira/Keycloak">Keycloak com extensões em Java</a></h3>
@@ -341,7 +341,7 @@
                     <p>
                         RabbitMQ 4.3 em Docker com a topologia como código (filas quorum com DLQ), usuário guest removido e
                         permissões mínimas por aplicação, TLS opcional, métricas para o Prometheus e logs com fallback local
-                        enviados ao Graylog.
+                        enviados ao Graylog. Traz a topologia da importação em lote de usuários: exchanges, fila com retry por TTL e DLQ, e um usuário só com as permissões do Cadastro.
                     </p>
                     <ul class="tags" aria-label="Tecnologias"><li>RabbitMQ</li><li>Docker</li><li>Prometheus</li><li>Fluent Bit</li></ul>
                 </li>

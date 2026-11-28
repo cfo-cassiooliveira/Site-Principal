@@ -76,7 +76,7 @@
           "url": "https://cassiofernandooliveira.com.br/",
           "name": "Cássio F. Oliveira | Desenvolvedor Full Stack .NET e Angular",
           "inLanguage": "pt-BR",
-          "dateModified": "2026-11-13",
+          "dateModified": "2026-11-28",
           "isPartOf": { "@id": "https://cassiofernandooliveira.com.br/#website" },
           "mainEntity": { "@id": "https://cassiofernandooliveira.com.br/#person" }
         },
@@ -208,7 +208,7 @@
                     </a>
                 </div>
                 <figcaption>
-                    A arquitetura com que trabalho, reproduzida em código aberto no GitHub. Cada bloco é um repositório público: clique para ver o código.
+                    A arquitetura com que trabalho, reproduzida em código aberto no GitHub. Os blocos com link são repositórios públicos: clique para ver o código.
                 </figcaption>
             </figure>
         </section>
@@ -309,7 +309,7 @@
                     <p>
                         Servidor de identidade reproduzível em Docker: migração sob demanda dos usuários do legado (Authenticator SPI
                         que valida a senha no legado por TLS e HMAC e cria o usuário sem pedir reset), OTP obrigatório para
-                        administradores, auditoria de login sem dados pessoais enviada ao Graylog com fallback local, tema de login
+                        administradores, login com Google apenas para contas já existentes, claim com a origem da conta, auditoria de login sem dados pessoais enviada ao Graylog com fallback local, tema de login
                         próprio e realm endurecido com o client do cadastro.
                     </p>
                     <ul class="tags" aria-label="Tecnologias"><li>Java</li><li>Keycloak SPI</li><li>HMAC</li><li>Bootstrap 5</li><li>Docker</li><li>Trivy</li></ul>
@@ -334,7 +334,7 @@
                     <h3><a href="https://github.com/cfo-cassiooliveira/workspace-grafana">Painéis e alertas</a></h3>
                     <p>
                         Grafana OSS com login único pelo Keycloak e dashboards, alertas e health check como código, lendo os logs
-                        do Graylog por um proxy somente leitura do OpenSearch.
+                        do Graylog por um proxy somente leitura do OpenSearch. Inclui o painel da fila de importação em lote e o alerta de mensagens paradas.
                     </p>
                     <ul class="tags" aria-label="Tecnologias"><li>Grafana</li><li>Prometheus</li><li>OpenSearch</li><li>Docker</li></ul>
                 </li>
@@ -351,7 +351,7 @@
                     <h3><a href="https://github.com/cfo-cassiooliveira/sonarqube">Qualidade de código</a></h3>
                     <p>
                         SonarQube provisionado em Docker com o Quality Gate como código: nenhuma issue nova e cobertura
-                        mínima de 80% em todo código novo, aplicado a todos os projetos do portfólio.
+                        mínima de 80% em todo código novo, aplicado ao cadastro, ao legado, ao Keycloak e aos dois sites.
                     </p>
                     <ul class="tags" aria-label="Tecnologias"><li>SonarQube</li><li>PostgreSQL</li><li>Docker</li></ul>
                 </li>

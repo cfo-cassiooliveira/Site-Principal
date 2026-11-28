@@ -16,6 +16,7 @@
     color-scheme: light;
 }
 
+/* O tema escuro redefine só os tokens: os componentes não precisam de regras próprias por tema. */
 @media (prefers-color-scheme: dark) {
     :root {
         --paper: #0f1830;
@@ -36,6 +37,7 @@
     box-sizing: border-box;
 }
 
+/* O recuo da rolagem impede que o cabeçalho fixo cubra o título da seção ao navegar por âncora. */
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 4.5rem;
@@ -72,6 +74,7 @@ a {
     padding-inline: var(--gutter);
 }
 
+/* Fora da tela em vez de display: none, para continuar alcançável pelo teclado. */
 .skip-link {
     position: absolute;
     left: var(--gutter);
@@ -164,7 +167,7 @@ a {
     padding-block: 4rem 3rem;
 }
 
-/* Texto ocupa toda a coluna da esquerda; a foto equilibra a direita, sem área vazia. */
+/* minmax(0, 1fr) deixa a coluna de texto encolher sem estourar a grade. Texto ocupa toda a coluna da esquerda; a foto equilibra a direita, sem área vazia. */
 .hero-main {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 17.5rem;
@@ -256,7 +259,7 @@ h1 {
     background: color-mix(in srgb, var(--accent) 85%, var(--ink));
 }
 
-/* Mapa do sistema: cada bloco é um repositório real */
+/* Mapa do sistema: blocos com link levam a um repositório; o tracejado (CI) é só informativo. */
 .system-map {
     margin: 4rem 0 0;
 }
@@ -474,7 +477,7 @@ h2 {
     margin: 0;
 }
 
-/* Etiquetas de tecnologia: palavras-chave que o recrutador procura ao bater o olho. */
+/* Etiquetas de tecnologia: palavras-chave legíveis numa leitura rápida. */
 .tags {
     display: flex;
     flex-wrap: wrap;
@@ -525,7 +528,7 @@ dd {
     margin: 0 0 1.5rem;
 }
 
-/* Contatos à esquerda e QR à direita, na mesma altura. */
+/* Contatos à esquerda e QR à direita, centralizados entre si na vertical. */
 .contact-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
@@ -593,6 +596,7 @@ dd {
     font-weight: 600;
 }
 
+/* O e-mail não tem espaços: sem a quebra livre, estouraria o cartão em telas estreitas. */
 .contact-value {
     color: var(--accent);
     font-size: 0.95rem;
@@ -610,7 +614,8 @@ dd {
     font-size: 0.9rem;
 }
 
-/* Celular: menu recolhível e mapa em coluna, na ordem do fluxo da requisição */
+/* Telas de até 900px (celular e tablet em retrato): menu recolhível e mapa em coluna, na ordem do fluxo da
+   requisição. O menu fechado usa display: none para também sair da ordem de tabulação. */
 @media (max-width: 900px) {
     .menu-toggle {
         display: block;
@@ -718,6 +723,7 @@ dd {
     }
 }
 
+/* Sem animação, as linhas do mapa precisam aparecer já desenhadas (dashoffset zerado). */
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;

@@ -6,6 +6,7 @@ function initMenu() {
         return;
     }
 
+    // Classe e aria-expanded mudam juntos: o leitor de tela anuncia o mesmo estado que aparece na tela.
     const setOpen = (open) => {
         nav.classList.toggle('is-open', open);
         toggle.setAttribute('aria-expanded', String(open));
@@ -30,6 +31,7 @@ function initMenu() {
 // Marca no menu a seção que está na faixa central da tela, para o visitante saber onde está na página.
 function initSectionTracking() {
     const links = [...document.querySelectorAll('#site-nav a[href^="#"]')];
+    // A marcação é um complemento: sem suporte ao observador, a navegação segue funcionando.
     if (links.length === 0 || !('IntersectionObserver' in window)) {
         return;
     }
